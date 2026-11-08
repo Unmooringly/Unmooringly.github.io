@@ -1,0 +1,32 @@
+# ============================================================
+# 河海大学 111 校史 · Cloudflare Worker
+#   · 只做 API（配合 GitHub Pages）→ 保持下面这样即可
+#   · 想「网站 + 接口」同域部署 → 把文件末尾的 [assets] 段取消注释
+#
+# 部署：
+#   1) npm i -g wrangler        （或 npx wrangler）
+#   2) wrangler login
+#   3) wrangler secret put DOUBAO_API_KEY      ← 粘贴你的 ark- 开头的 Key（不会进代码库）
+#   4) wrangler deploy
+#   5) 把输出的 https://xxxx.workers.dev 填进 js/config.js 的 apiBase
+# ============================================================
+
+name = "hhu111-api"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# 非机密的普通变量放这里
+[vars]
+DOUBAO_MODEL = "doubao-seedream-5-0-flash-260915"
+# DOUBAO_ENDPOINT = "https://ark.cn-beijing.volces.com/api/v3/images/generations"
+
+# ────────────────────────────────────────────────────────────
+# 【可选】让这个 Worker 顺带托管整个网页（同域，零 CORS）
+#   · 先在本项目根目录运行一次 打包网页版.ps1 生成 ../网页版
+#   · 取消下面 3 行注释后再 deploy
+#   · 部署成功后直接访问 https://<name>.<你的子域>.workers.dev/index.html
+#     （此时 js/config.js 的 apiBase 可以留空）
+# ────────────────────────────────────────────────────────────
+# [assets]
+# directory = "../网页版"
+# binding = "ASSETS"
