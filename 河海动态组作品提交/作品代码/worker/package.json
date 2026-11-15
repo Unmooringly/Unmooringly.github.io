@@ -1,6 +1,0 @@
-{
-  "name": "hhu111-worker",
-  "private": true,
-  "type": "module",
-  "description": "河海 111 校史 · Cloudflare Worker（生图代理 + 抓取中继）。仅用于让 Node 以 ESM 方式直接跑 index.js 做本地验证；不影响 Cloudflare 部署。"
-}
